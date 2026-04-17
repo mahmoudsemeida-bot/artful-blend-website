@@ -1,0 +1,77 @@
+/* ========================================
+   MENU FILTERING SYSTEM
+   نظام تصفية القائمة المحسّن
+======================================== */
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ========== عناصر القائمة ==========
+    const menuTabs = document.querySelectorAll('.menu__tab');
+    const menuItems = document.querySelectorAll('.menu__item');
+    
+    // ========== وظيفة التصفية ==========
+    function filterMenu(category) {
+        // إخفاء جميع العناصر أولاً
+        menuItems.forEach(item => {
+            item.style.display = 'none';
+            item.classList.remove('active');
+        });
+        
+        // إظهار العناصر المطلوبة فقط
+        const filteredItems = document.querySelectorAll(`[data-category="${category}"]`);
+        
+        filteredItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, 50);
+            }, index * 100); // تأخير تدريجي للأنيميشن
+        });
+    }
+    
+    // ========== إضافة Event Listeners للتبويبات ==========
+    menuTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // إزالة الكلاس النشط من جميع التبويبات
+            menuTabs.forEach(t => t.classList.remove('active'));
+            
+            // إضافة الكلاس النشط للتبويب المختار
+            this.classList.add('active');
+            
+            // الحصول على الفئة المختارة
+            const category = this.getAttribute('data-category');
+            
+            // تطبيق التصفية
+            filterMenu(category);
+            
+            // حفظ الاختيار في localStorage
+            localStorage.setItem('selectedMenuCategory', category);
+        });
+    });
+    
+    // ========== استرجاع الاختيار المحفوظ ==========
+    const savedCategory = localStorage.getItem('selectedMenuCategory');
+    if (savedCategory) {
+        const savedTab = document.querySelector(`[data-category="${savedCategory}"]`);
+        if (savedTab) {
+            savedTab.click();
+        }
+    } else {
+        // عرض المشروبات افتراضياً
+        filterMenu('drinks');
+    }
+    
+    // ========== تأثيرات Hover على عناصر القائمة ==========
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    console.log('✅ Menu filtering system initialized');
+});

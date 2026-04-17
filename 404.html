@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Artful Blend London</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F5E6D3 0%, #FFFFFF 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .error-icon {
+            font-size: 120px;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        h1 {
+            font-size: 6rem;
+            color: #8B6F47;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: #343A40;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            color: #6C757D;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background-color: #8B6F47;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #6B5537;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: #8B6F47;
+            border: 2px solid #8B6F47;
+        }
+        
+        .btn-outline:hover {
+            background-color: #8B6F47;
+            color: white;
+        }
+        
+        .coffee-cup {
+            width: 200px;
+            margin: 2rem auto;
+            opacity: 0.3;
+        }
+        
+        @media screen and (max-width: 768px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">☕</div>
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>
+            Looks like this page took a coffee break and never came back. 
+            Don't worry, we have plenty more brewing!
+        </p>
+        
+        <div class="buttons">
+            <a href="/" class="btn">
+                🏠 Back to Home
+            </a>
+            <a href="/#menu" class="btn btn-outline">
+                📋 View Menu
+            </a>
+            <a href="/#booking" class="btn btn-outline">
+                📅 Book a Table
+            </a>
+        </div>
+        
+        <svg class="coffee-cup" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#8B6F47" d="M50,80 L50,140 Q50,160 70,160 L130,160 Q150,160 150,140 L150,80 Z"/>
+            <path fill="#D4A574" d="M40,70 L160,70 L160,85 L40,85 Z"/>
+            <ellipse cx="100" cy="70" rx="60" ry="10" fill="#6B5537"/>
+            <path fill="none" stroke="#8B6F47" stroke-width="8" d="M160,100 Q180,100 180,120 Q180,140 160,140"/>
+        </svg>
+        
+        <p style="margin-top: 2rem; font-size: 0.875rem; color: #6C757D;">
+            Error Code: 404 | Page Not Found<br>
+            <a href="/" style="color: #8B6F47;">Return to Artful Blend</a>
+        </p>
+    </div>
+    
+    <script>
+        // Auto redirect after 10 seconds
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 10000);
+    </script>
+</body>
+</html>
